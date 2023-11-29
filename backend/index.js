@@ -9,6 +9,9 @@ const { connectToDb } = require('./src/database/index.js');
 const router = require('./src/routers/index.js');
 
 dotenv.config();
+
+const port = process.env.PORT || 3001;
+
 app.use(express.json());
 
 app.use(helmet());
@@ -22,8 +25,8 @@ app.use(morgan("combined"));
 
 app.use(router);
 
-app.listen(process.env.PORT, () => {
-    console.log("Server is listenning on http://localhost:" + process.env.PORT);
+app.listen(port, () => {
+    console.log("Server is listenning on http://localhost:" + port);
 })
 
 
