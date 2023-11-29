@@ -60,14 +60,13 @@ const createAnEvent = () => {
       try {
         const seatsEvent = await axios.get(API_SeatEvent);
         console.log(seatsEvent)
-        const seatValue = seatsEvent.data.result.dataSeats;
+        const seatValue = seatsEvent.data.result;
         setSeats(seatValue);
         console.log(seatValue)
         // form.setFieldsValue({ seats: seatValue });
         form.setFieldsValue({
           seats: paymentOfMethod === "Online" ? [] : seats,
         });
-        console.log(seats)
       } catch (error) {
         console.log(error);
       }
