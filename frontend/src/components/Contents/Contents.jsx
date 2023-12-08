@@ -7,9 +7,17 @@ import pictureLeft from "..//..//Slide/heading-img-1-left.jpg";
 import pictureRight from "..//..//Slide/heading-img-1-mobile.jpg";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+// import dotenv from "dotenv"
+
+// dotenv.config()
+
+const { VITE_APP_URL_Api } = import.meta.env
+console.log(VITE_APP_URL_Api)
+
 
 const Contents = () => {
-  const eventData = "https://beshareevents.onrender.com/event/getList/"
+  // const eventData = "https://beshareevents.onrender.com/event/getList/"
+  const eventData = `${VITE_APP_URL_Api}event/getList/`
   const [responseEvent, setResponseEvent] = useState()
   useEffect(() => {
     const getData = async () => {

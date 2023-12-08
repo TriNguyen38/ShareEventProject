@@ -26,6 +26,8 @@ import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../../components/Navbar/Navbar";
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
+const { VITE_APP_URL_Api } = import.meta.env
+console.log(VITE_APP_URL_Api)
 
 const normFile = (e) => {
   if (Array.isArray(e)) {
@@ -36,9 +38,9 @@ const normFile = (e) => {
 
 const createAnEvent = () => {
   const accessToken = useSelector((state) => state.accessToken);
-  const API_RegisterEvent = "https://beshareevents.onrender.com/event/createEvent";
-  const API_CategoriesEvent = "https://beshareevents.onrender.com/category";
-  const API_SeatEvent = "https://beshareevents.onrender.com/seat/getAllidSeats";
+  const API_RegisterEvent = `${VITE_APP_URL_Api}event/createEvent`;
+  const API_CategoriesEvent = `${VITE_APP_URL_Api}category`;
+  const API_SeatEvent = `${VITE_APP_URL_Api}seat/getAllSeats`;
   const [form] = Form.useForm();
   const [errorVisible, setErrorVisible] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -59,8 +61,8 @@ const createAnEvent = () => {
     const getSeat = async () => {
       try {
         const seatsEvent = await axios.get(API_SeatEvent);
-        console.log(seatsEvent)
-        const seatValue = seatsEvent.data.result;
+        console.log(seatsEvent.data.result.dataSeats.length);
+        const seatValue = seatsEvent.data.result.dataSeats;
         setSeats(seatValue);
         console.log(seatValue)
         // form.setFieldsValue({ seats: seatValue });

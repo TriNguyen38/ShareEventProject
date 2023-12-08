@@ -11,6 +11,8 @@ import {
   CaretDownOutlined,
   CopyrightOutlined,
 } from "@ant-design/icons";
+const { VITE_APP_URL_Api } = import.meta.env
+console.log(VITE_APP_URL_Api)
 const Event = () => {
   const { _id } = useParams();
   const [product, setProduct] = useState({});
@@ -22,18 +24,18 @@ const Event = () => {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const response = await axios.get(`https://beshareevents.onrender.com/event/${_id}`);
+        const response = await axios.get(`${VITE_APP_URL_Api}event/${_id}`);
         console.log("res:", response.data);
         const eventDetail = response.data.event;
         console.log("event", eventDetail);
         setProduct(eventDetail);
-        console.log("setProduct", product);
+        console.log("setProduct", product.price);
       } catch (error) {
         console.log("Lỗi:", error.response);
       }
     };
     getProduct();
-  }, [`http://beshareevents.onrender.com/event/${_id}`]);
+  }, [`${VITE_APP_URL_Api}event/${_id}`]);
   console.log("product:", product);
   console.log("price", product.price);
   const dateDetail = product.time
@@ -87,10 +89,12 @@ const Event = () => {
               flexDirection: "column",
               alignItems: "center",
             }}
+            href={`/event/${product._id}/booking`}
+
           >
-            <Link className="label-book" to={`/event/${product._id}/booking`}>
-              <span>Book now</span>
-            </Link>
+            {/* <Link className="label-book" to={`/event/${product._id}/booking`}> */}
+              <span className="label-book">Book now</span>
+            {/* </Link> */}
             <div className="text">
               <span className="label-1">
                 <FacebookOutlined />
@@ -146,15 +150,18 @@ const Event = () => {
           )}
           <div className="book-nows">
             <a
+            
               style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
               }}
+            href={`/event/${product._id}/booking`}
+
             >
-              <Link className="label-book" to={`/event/${product._id}/booking`}>
+              {/* <Link className="label-book" to={`/event/${product._id}/booking`}> */}
                 <span className="label-book">Book now</span>
-              </Link>
+              {/* </Link> */}
               <div className="text">
                 <span className="label-1">
                   <FacebookOutlined />
@@ -173,7 +180,7 @@ const Event = () => {
           <h3 className="title2">TICKET INFORMATION</h3>
           {product.price?.map((item) => {
             return (
-              <div className="info" key={item.key}>
+              <div className="info" key={item.option}>
                 <p className="word-p">{item.name}</p>
                 <strong className="price">{item.price}</strong>
               </div>

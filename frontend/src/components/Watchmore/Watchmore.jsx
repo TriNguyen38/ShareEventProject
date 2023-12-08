@@ -8,7 +8,7 @@ function Watchmore() {
     useEffect(() => {
         const fetchdata = async () => {
             try {
-                const res = await axios.get('http://localhost:3001/event/getList/');
+                const res = await axios.get('http://localhost:4001/event/getList/');
                 console.log('dd:', res);
                 const catchData = res.data.events.docs;
                 setData(catchData);

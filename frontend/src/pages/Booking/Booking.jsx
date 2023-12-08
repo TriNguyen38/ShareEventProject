@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState,useEffect } from 'react';
 
+const { VITE_APP_URL_Api } = import.meta.env
+console.log(VITE_APP_URL_Api)
 
 const Booking = () => {
   const [eventById, setEventById] = useState({});
@@ -13,7 +15,9 @@ const Booking = () => {
   useEffect(() => {
     const getEventById = async () => {
       try {
-        const response = await axios.get(`https://beshareevents.onrender.com/event/${_id}`);
+        // const response = await axios.get(`https://beshareevents.onrender.com/event/${_id}`);
+        const response = await axios.get(`${VITE_APP_URL_Api}/event/${_id}`);
+
         console.log("res:", response.data);
         setEventById(response.data)
         console.log("setEvent", product);
