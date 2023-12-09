@@ -12,11 +12,13 @@ const SelectTicket = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [eventById, setEventById] = useState({});
 
+const { VITE_APP_URL_Api } = import.meta.env
+  
   const { _id } = useParams();
   useEffect(() => {
     const getEventById = async () => {
       try {
-        const response = await axios.get(`https://beshareevents.onrender.com/event/${_id}`);
+        const response = await axios.get(`${VITE_APP_URL_Api}event/${_id}`);
         console.log("res:", response.data);
         setEventById(response.data)
         console.log("setEvent", product);
@@ -25,7 +27,7 @@ const SelectTicket = () => {
       }
     };
     getEventById();
-  }, [`http://beshareevents.onrender.com/event/${_id}`]);
+  }, [`${VITE_APP_URL_Api}event/${_id}`]);
   // const eventName = eventById.event.nameE;
   // console.log(eventName)
 

@@ -261,7 +261,9 @@ const createAnEvent = () => {
             ]}
           >
             <TreeSelect
-              defaultValue={["Offline"]}
+              initialvalues={["Offline"]}
+              // defaultValue thay doi thanh initialvalue,vi bi warning tu antd
+
               treeData={[
                 { title: "Offline", value: "Offline" },
                 { title: "Online", value: "Online" },
@@ -292,7 +294,8 @@ const createAnEvent = () => {
             rules={[{ required: true, message: "Vui lòng chọn danh mục!" }]}
           >
             <TreeSelect
-              defaultValue={["Draft"]}
+              initialvalues={["Draft"]} 
+              // defaultValue thay doi thanh initialvalue,vi bi warning tu antd
               treeData={[
                 { title: "Draft", value: "Draft" },
                 { title: "Public", value: "public" },

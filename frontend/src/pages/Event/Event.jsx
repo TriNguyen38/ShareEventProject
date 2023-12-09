@@ -88,6 +88,7 @@ const Event = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              textDecoration: "none",
             }}
             href={`/event/${product._id}/booking`}
 
@@ -155,6 +156,7 @@ const Event = () => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                textDecoration: "none"
               }}
             href={`/event/${product._id}/booking`}
 

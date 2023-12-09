@@ -16,7 +16,7 @@ const Booking = () => {
     const getEventById = async () => {
       try {
         // const response = await axios.get(`https://beshareevents.onrender.com/event/${_id}`);
-        const response = await axios.get(`${VITE_APP_URL_Api}/event/${_id}`);
+        const response = await axios.get(`${VITE_APP_URL_Api}event/${_id}`);
 
         console.log("res:", response.data);
         setEventById(response.data)
@@ -26,7 +26,7 @@ const Booking = () => {
       }
     };
     getEventById();
-  }, [`http://beshareevents.onrender.com/event/${_id}`]);
+  }, [`${VITE_APP_URL_Api}event/${_id}`]);
   console.log(eventById)
   const product = eventById.event
   console.log(product)
