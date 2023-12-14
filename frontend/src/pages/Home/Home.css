@@ -4,6 +4,9 @@
     display: flex;
     position: relative;
 }
+.home a {
+  text-decoration: none;
+}
 
   .left-side{
     display: flex;

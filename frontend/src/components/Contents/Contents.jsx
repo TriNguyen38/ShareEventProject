@@ -35,7 +35,7 @@ const Contents = () => {
   return (
     <>
       <Slide />
-      <div className="list-container">
+      <div className="list-container-homepage">
         <div className="title-featured">
           <img className="picture-left" src={pictureLeft} alt="" />
           <h1>Featured events</h1>

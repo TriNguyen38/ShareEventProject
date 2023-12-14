@@ -13,6 +13,7 @@
   
   .center-section .title span{
     color: black;
+    
   }
   .left-section {
     display: flex;
@@ -36,7 +37,10 @@
   .center-section {
     flex: 1;
     display: flex;
-    justify-content: center
+    justify-content: center;
+  }
+  .center-section a{
+    text-decoration: none;
   }
   
   .right-section {
