@@ -11,6 +11,8 @@ const SelectTicket = () => {
   const [totalPriceByType, setTotalPriceByType] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
   const [eventById, setEventById] = useState({});
+  const [seatItem ,setSeatItem] = useState ([])
+  const [priceItem, setPriceItem] = useState([])
 
 const { VITE_APP_URL_Api } = import.meta.env
   
@@ -21,6 +23,8 @@ const { VITE_APP_URL_Api } = import.meta.env
         const response = await axios.get(`${VITE_APP_URL_Api}event/${_id}`);
         console.log("res:", response.data);
         setEventById(response.data)
+        setSeatItem (response.data.event.seats)
+        setPriceItem (response.data.event.price)
         console.log("setEvent", product);
       } catch (error) {
         console.log("Lỗi:", error.response);
@@ -30,6 +34,17 @@ const { VITE_APP_URL_Api } = import.meta.env
   }, [`${VITE_APP_URL_Api}event/${_id}`]);
   // const eventName = eventById.event.nameE;
   // console.log(eventName)
+  console.log(priceItem)
+
+    seatItem.forEach(newItem => {
+      const getPrice = priceItem.find(item=>item.option === newItem.type)
+      if (getPrice){
+        newItem.price = getPrice.price
+      }
+    })
+  
+  console.log("seatItem",seatItem)
+
 
 
   const handleMouseEnter = (stage) => {
@@ -55,7 +70,7 @@ const { VITE_APP_URL_Api } = import.meta.env
       console.log(ticketClick);
     } else {
       if (ticketClick.length < 10) {
-        const selectedTicket = fakeSeat.find(
+        const selectedTicket = seatItem.find(
           (ticket) => ticket.id === circleInfo.id
         );
         setTicketClick([...ticketClick, selectedTicket]);
@@ -223,12 +238,13 @@ const { VITE_APP_URL_Api } = import.meta.env
             <div className="color-standart-vvip"></div>
           </div>
         </div>
+
         <div className="seatMap">
           <span className="title-seatMap">Stage/Sân khấu</span>
           {/* <div className="seatMapComponent"> */}
           <div className="seatMapComponent-VVip">
-            {fakeSeat
-              .filter((stage) => stage.type === "V-Vip")
+            {seatItem
+              .filter((stage) => stage.type === "V.Vip")
               .map((stage, index) => (
                 <div
                   className={`model-${stage.type} ${
@@ -248,16 +264,18 @@ const { VITE_APP_URL_Api } = import.meta.env
                     {stage.index}
                     {circleInfo && (
                       <div className="circle-info">
-                        <span>{stage.price} VND</span>
+                        <span>{stage.nameOfSeat}</span>
                         <span>{stage.type}</span>
+                        <span>{stage.price}</span>
+
                       </div>
                     )}
                   </div>
                 </div>
               ))}
-          </div>
+          </div>  
           <div className="seatMapComponent-Vip">
-            {fakeSeat
+            {seatItem
               .filter((stage) => stage.type === "Vip")
               .map((stage, index) => (
                 <div
@@ -277,8 +295,9 @@ const { VITE_APP_URL_Api } = import.meta.env
                     {stage.index}
                     {circleInfo && (
                       <div className="circle-info">
-                        <span>{stage.price}</span>
+                        <span>{stage.nameOfSeat}</span>
                         <span>{stage.type}</span>
+                        <span>{stage.price}</span>
                       </div>
                     )}
                   </div>
@@ -286,7 +305,7 @@ const { VITE_APP_URL_Api } = import.meta.env
               ))}
           </div>
           <div className="seatMapComponent-Standard">
-            {fakeSeat
+            {seatItem
               .filter((stage) => stage.type === "Standard")
               .map((stage, index) => (
                 <div
@@ -306,8 +325,9 @@ const { VITE_APP_URL_Api } = import.meta.env
                     {stage.index}
                     {circleInfo && (
                       <div className="circle-info">
-                        <span>{stage.price}</span>
+                        <span>{stage.nameOfSeat}</span>
                         <span>{stage.type}</span>
+                        <span>{stage.price}</span>
                       </div>
                     )}
                   </div>
@@ -317,6 +337,7 @@ const { VITE_APP_URL_Api } = import.meta.env
           {/* </div> */}
         </div>
       </div>
+
       <div className="info-payment">
         <span className="infoTicket">Thông tin đặt vé</span>
         <hr />

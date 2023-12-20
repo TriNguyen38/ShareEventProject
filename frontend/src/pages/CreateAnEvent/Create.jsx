@@ -67,7 +67,7 @@ const createAnEvent = () => {
         console.log(seatValue)
         // form.setFieldsValue({ seats: seatValue });
         form.setFieldsValue({
-          seats: paymentOfMethod === "Online" ? [] : seats,
+          seats: paymentOfMethod === "Online" ? [] : seatValue,
         });
       } catch (error) {
         console.log(error);
@@ -334,11 +334,11 @@ const createAnEvent = () => {
                         // ]}
                       >
                         <Select placeholder="Chọn Option">
-                          <Select.Option value="standard">
+                          <Select.Option value="Standard">
                             Standard
                           </Select.Option>
-                          <Select.Option value="vip">VIP</Select.Option>
-                          <Select.Option value="vvip">V.VIP</Select.Option>
+                          <Select.Option value="Vip">Vip</Select.Option>
+                          <Select.Option value="V.Vip">V.Vip</Select.Option>
                         </Select>
                       </Form.Item>
                       <Form.Item
