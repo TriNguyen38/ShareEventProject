@@ -126,7 +126,7 @@
   z-index: 1;
 }
 
-.model-V.Vip:hover .circle-info{
+.model-V-Vip:hover .circle-info{
     opacity: 1;
     pointer-events: auto;
 }
@@ -209,7 +209,7 @@
 .seatMapComponent-Standard{
     background-color: yellow;;
 }
-.model-V.Vip.selected .numberSeat,
+.model-V-Vip .selected .numberSeat,
 .model-Vip.selected .numberSeat,
 .model-Standard.selected .numberSeat {
 background-color: rgb(19, 25, 217);

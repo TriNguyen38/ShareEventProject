@@ -40,7 +40,8 @@ const createAnEvent = () => {
   const accessToken = useSelector((state) => state.accessToken);
   const API_RegisterEvent = `${VITE_APP_URL_Api}event/createEvent`;
   const API_CategoriesEvent = `${VITE_APP_URL_Api}category`;
-  const API_SeatEvent = `${VITE_APP_URL_Api}seat/getAllSeats`;
+  const API_SeatEvent = `${VITE_APP_URL_Api}seat`;
+  // const API_SeatEvent = `${VITE_APP_URL_Api}seat/getAllSeats`;
   const [form] = Form.useForm();
   const [errorVisible, setErrorVisible] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -61,8 +62,10 @@ const createAnEvent = () => {
     const getSeat = async () => {
       try {
         const seatsEvent = await axios.get(API_SeatEvent);
-        console.log(seatsEvent.data.result.dataSeats.length);
-        const seatValue = seatsEvent.data.result.dataSeats;
+        // console.log(seatsEvent.data.result.dataSeats.length);
+        console.log(seatsEvent.data.result.length);
+
+        const seatValue = seatsEvent.data.result;
         setSeats(seatValue);
         console.log(seatValue)
         // form.setFieldsValue({ seats: seatValue });
@@ -338,7 +341,7 @@ const createAnEvent = () => {
                             Standard
                           </Select.Option>
                           <Select.Option value="Vip">Vip</Select.Option>
-                          <Select.Option value="V.Vip">V.Vip</Select.Option>
+                          <Select.Option value="V-Vip">V.Vip</Select.Option>
                         </Select>
                       </Form.Item>
                       <Form.Item

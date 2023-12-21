@@ -61,7 +61,7 @@ const { VITE_APP_URL_Api } = import.meta.env
   console.log ("ticketClick",ticketClick);
 
 
-  const handleClick = () => {                               // sua loi handleClick
+  const handleClick = () => {                               
     const isSelected = ticketClick.find(
       (ticket) => ticket._id === circleInfo._id
       
@@ -113,89 +113,6 @@ const { VITE_APP_URL_Api } = import.meta.env
     setIsCheck(!isCheck);
     console.log(isCheck);
   };
-
-    const fakeSeat = [
-    {
-      id: 1,
-      type: "Standard",
-      price: 205,
-    },
-    {
-      id: 2,
-      type: "Standard",
-      price: 206,
-    },
-    {
-      id: 3,
-      type: "Vip",
-      price: 350,
-    },
-    {
-      id: 4,
-      type: "V-Vip",
-      price: 500,
-    },
-    {
-      id: 5,
-      type: "V-Vip",
-      price: 500,
-    },
-    {
-      id: 6,
-      type: "V-Vip",
-      price: 500,
-    },
-    {
-      id: 7,
-      type: "V-Vip",
-      price: 500,
-    },
-    {
-      id: 8,
-      type: "V-Vip",
-      price: 500,
-    },
-    {
-      id: 9,
-      type: "V-Vip",
-      price: 500,
-    },
-    {
-      id: 10,
-      type: "V-Vip",
-      price: 500,
-    },
-    {
-      id: 11,
-      type: "V-Vip",
-      price: 500,
-    },
-    {
-      id: 12,
-      type: "V-Vip",
-      price: 500,
-    },
-    {
-      id: 13,
-      type: "V-Vip",
-      price: 500,
-    },
-    {
-      id: 14,
-      type: "VVip",
-      price: 500,
-    },
-    {
-      id: 15,
-      type: "V-Vip",
-      price: 500,
-    },
-    {
-      id: 16,
-      type: "V-Vip",
-      price: 500,
-    },
-  ];
  
   const uniqueTicketTypes = [
     ...new Set(ticketClick.map((ticket) => ticket.type)),
@@ -252,7 +169,7 @@ const { VITE_APP_URL_Api } = import.meta.env
           {/* <div className="seatMapComponent"> */}
           <div className="seatMapComponent-VVip">
             {seatItem
-              .filter((stage) => stage.type === "V.Vip")
+              .filter((stage) => stage.type === "V-Vip")
               .map((stage, index) => (
                 <div
                   className={`model-${stage.type} ${
@@ -260,8 +177,7 @@ const { VITE_APP_URL_Api } = import.meta.env
                       ? "selected"
                       : ""
                   }`}
-                  // className={`model-${stage.type}`}
-                  // key= {`${stage.type}-${stage.price}-${index}`}
+     
                   key={index}
                   onMouseEnter={() => handleMouseEnter(stage)}
                   // onMouseEnter={handleMouseEnter(stage)}
@@ -272,10 +188,9 @@ const { VITE_APP_URL_Api } = import.meta.env
                     {stage.index}
                     {circleInfo && (
                       <div className="circle-info">
-                        {/* <span>{stage.nameOfSeat}</span> */}
+                        <span>{stage.nameOfSeat}</span>
                         <span>{stage.type}</span>
                         <span>{stage.price}</span>
-
                       </div>
                     )}
                   </div>
