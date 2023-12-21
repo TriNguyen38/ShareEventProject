@@ -89,14 +89,16 @@ const { VITE_APP_URL_Api } = import.meta.env
     // const updatedId = ticketClick.map((ticket) => ticket.id);
     // setTicketId(updatedId);
     console.log("ticketClick", ticketClick);
+
     const updatedTotalPriceByType = ticketClick.reduce((acc, ticket) => {
       console.log(ticket);
       if (acc.hasOwnProperty(ticket.type)) {
-        acc[ticket.type] += ticket.price;
+        acc[ticket.type] += Number(ticket.price);
       } else {
         acc[ticket.type] = ticket.price;
       }
       console.log("acc", acc);
+      console.log("typeOf", typeof acc.Vip)
       return acc;
     }, {});
     console.log("updatedTotalPriceByType", updatedTotalPriceByType);

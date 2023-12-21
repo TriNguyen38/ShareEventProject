@@ -337,9 +337,7 @@ const createAnEvent = () => {
                         // ]}
                       >
                         <Select placeholder="Chọn Option">
-                          <Select.Option value="Standard">
-                            Standard
-                          </Select.Option>
+                          <Select.Option value="Standard">Standard</Select.Option>
                           <Select.Option value="Vip">Vip</Select.Option>
                           <Select.Option value="V-Vip">V.Vip</Select.Option>
                         </Select>
@@ -347,10 +345,10 @@ const createAnEvent = () => {
                       <Form.Item
                         name={[field.name, "price"]}
                         rules={[
-                          { required: true, message: "Vui lòng nhập giá tiền" },
+                          { required: true, message: "Vui lòng nhập giá tiền"},
                         ]}
                       >
-                        <Input placeholder="Nhập giá tiền" />
+                        <InputNumber placeholder="Nhập giá tiền" />
                       </Form.Item>
                       {fields.length > 1 && (
                         <Button danger onClick={() => remove(field.name)}>

@@ -209,7 +209,7 @@
 .seatMapComponent-Standard{
     background-color: yellow;;
 }
-.model-V-Vip .selected .numberSeat,
+.model-V-Vip.selected .numberSeat,
 .model-Vip.selected .numberSeat,
 .model-Standard.selected .numberSeat {
 background-color: rgb(19, 25, 217);
