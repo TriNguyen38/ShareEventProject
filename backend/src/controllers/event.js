@@ -67,7 +67,7 @@ const getAllEvents = async (req, res) => {
         // }
 
         return res.status(200).json({
-            message: "getting All Events are successfully",
+            message: "Getting All Events are successfully",
             result: {
                 dataEvents,
                 count,
@@ -76,6 +76,26 @@ const getAllEvents = async (req, res) => {
                 pageIndex
             } 
         });
+    } catch (error) {
+        return res.status(500).json({ message: error.message});
+    }
+};
+
+const getNewEvents = async (req, res) => {
+    try {
+        const newEvents = await eventModel.find({ status: "public"},  "image" ).limit(4).sort({createdAt: -1});
+
+        console.log(123);
+
+        if (!newEvents) {
+            return res.status(404).json({ message: "New Events are not found!" });
+        }
+
+        return res.status(200).json({
+            message: "Getting New Events is successfully!",
+            data: newEvents,
+        });
+
     } catch (error) {
         return res.status(500).json({ message: error.message});
     }
@@ -295,5 +315,6 @@ module.exports = {
     getEventById,
     createEvent,
     updateEvent,
-    deleteEvent
+    deleteEvent,
+    getNewEvents
 }
