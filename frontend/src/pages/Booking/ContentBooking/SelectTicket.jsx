@@ -192,7 +192,7 @@ const { VITE_APP_URL_Api } = import.meta.env
                       <div className="circle-info">
                         <span>{stage.nameOfSeat}</span>
                         <span>{stage.type}</span>
-                        <span>{stage.price}</span>
+                        <span>{stage.price.toLocaleString()}</span>
                       </div>
                     )}
                   </div>
@@ -222,7 +222,7 @@ const { VITE_APP_URL_Api } = import.meta.env
                       <div className="circle-info">
                         <span>{stage.nameOfSeat}</span>
                         <span>{stage.type}</span>
-                        <span>{stage.price}</span>
+                        <span>{stage.price.toLocaleString()}</span>
                       </div>
                     )}
                   </div>
@@ -252,7 +252,7 @@ const { VITE_APP_URL_Api } = import.meta.env
                       <div className="circle-info">
                         <span>{stage.nameOfSeat}</span>
                         <span>{stage.type}</span>
-                        <span>{stage.price}</span>
+                        <span>{stage.price.toLocaleString()}</span>
                       </div>
                     )}
                   </div>
@@ -302,7 +302,7 @@ const { VITE_APP_URL_Api } = import.meta.env
                 </div>
                 <span className="ticketCount">{count}</span>
                 <div className="ticketPrice">
-                  <span>{totalPriceByType[ticketType]}</span>
+                  <span>{parseInt(totalPriceByType[ticketType]).toLocaleString()} VND</span>
                 </div>
               </div>
             );
@@ -312,7 +312,7 @@ const { VITE_APP_URL_Api } = import.meta.env
         )}
         <div className="total-price">
           <span>Tổng cộng</span>
-          <span>{totalPrice} VND</span>
+          <span>{totalPrice.toLocaleString()} VND</span>
         </div>
         <div className="nextBtn">
           <button>Tiếp tục</button>

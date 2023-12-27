@@ -24,6 +24,7 @@ import {
 } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../../components/Navbar/Navbar";
+import TypedInputNumber from "antd/es/input-number";
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 const { VITE_APP_URL_Api } = import.meta.env
@@ -345,7 +346,7 @@ const createAnEvent = () => {
                       <Form.Item
                         name={[field.name, "price"]}
                         rules={[
-                          { required: true, message: "Vui lòng nhập giá tiền"},
+                          { required: true,pattern: /^(0|[1-9][0-9]*)$/ ,message: "Vui lòng nhập giá tiền"},
                         ]}
                       >
                         <InputNumber placeholder="Nhập giá tiền" />
