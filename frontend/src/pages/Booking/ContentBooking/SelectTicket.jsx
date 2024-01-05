@@ -300,7 +300,9 @@ const { VITE_APP_URL_Api } = import.meta.env
                       ))}
                   </div>
                 </div>
+                <div className="ticketCountLine">
                 <span className="ticketCount">{count}</span>
+                </div>
                 <div className="ticketPrice">
                   <span>{parseInt(totalPriceByType[ticketType]).toLocaleString()} VND</span>
                 </div>

@@ -79,7 +79,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 50vh;
+  height: 100%;
 }
 .total-price {
   background-color: gray;
@@ -217,21 +217,38 @@ background-color: rgb(19, 25, 217);
 .ticketInfo{
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  margin: 10px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  
 }
 .seatInfo{
   display: flex;
   flex-direction: column;
 }
+.ticketCountLine{
+  padding: 0px 10px 0px 10px;
+}
+.ticketPrice span{
+  margin-left: 70px;
+}
+.ticket-info{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 45%;
+}
 .ticketId{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+
+
 }
 .showIdTicket{
   padding: 10px;
+
 }
-.ticketInfo{
-  margin: 10px;
-}
+
 
