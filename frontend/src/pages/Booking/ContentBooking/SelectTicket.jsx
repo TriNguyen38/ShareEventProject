@@ -3,8 +3,9 @@ import "./SelectTicket.css";
 import { message } from "antd";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import BookingState from "../BookingState/BookingState";
 
-const SelectTicket = () => {
+const SelectTicket = ({next}) => {
   const [isCheck, setIsCheck] = useState(false);
   const [circleInfo, setCircleInfo] = useState(null);
   const [ticketClick, setTicketClick] = useState([]);
@@ -12,9 +13,13 @@ const SelectTicket = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [eventById, setEventById] = useState({});
   const [seatItem ,setSeatItem] = useState ([])
-  const [priceItem, setPriceItem] = useState([])
+  const [priceItem, setPriceItem] = useState([]);
+
 
 const { VITE_APP_URL_Api } = import.meta.env
+
+
+
   
   const { _id } = useParams();
   useEffect(() => {
@@ -317,7 +322,9 @@ const { VITE_APP_URL_Api } = import.meta.env
           <span>{totalPrice.toLocaleString()} VND</span>
         </div>
         <div className="nextBtn">
-          <button>Tiếp tục</button>
+          <button onClick={next}>
+            Tiếp tục
+            </button>
         </div>
       </div>
     </div>

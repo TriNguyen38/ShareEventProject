@@ -1,34 +1,41 @@
 import React, { useState } from 'react';
-import { Button, message, Steps, theme } from 'antd';
+import { Button, message, Select, Steps, theme } from 'antd';
 import "./BookingState.css"
 import SelectTicket from '../ContentBooking/SelectTicket';
-const steps = [
-  {
-    title: 'Chọn vé',
-    content: <SelectTicket />,
-  },
-  {
-    title: 'Thanh toán',
-    content: 'Second-content',
-  },
-  {
-    title: 'Hoàn tất',
-    content: 'Last-content',
-  },
-];
-const App = () => {
+
+
+const BookingState = () => {
+XPathExpression
+
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
   const next = () => {
     setCurrent(current + 1);
   };
+
+
   const prev = () => {
     setCurrent(current - 1);
   };
+  const steps = [
+    {
+      title: 'Chọn vé',
+      content: <SelectTicket next = { next }/>,
+    },
+    {
+      title: 'Thanh toán',
+      content: 'Second-content',
+    },
+    {
+      title: 'Hoàn tất',
+      content: 'Last-content',
+    },
+  ];
   const items = steps.map((item) => ({
     key: item.title,
     title: item.title,
-  }));
+  }));  
+
   const contentStyle = {
     // lineHeight: '260px',
     // textAlign: 'center',
@@ -44,21 +51,24 @@ const App = () => {
     height: 600
     // display: 'flex',
   };
+
   return (
     <>
+    
     <div className="booking-state">
-      <Steps current={current} items={items} />
+      
+      <Steps current={current} items={items}  />
       <div style={contentStyle}>{steps[current].content}</div>
       <div
         style={{
           marginTop: 24,
         }}
       >
-        {current < steps.length - 1 && (
+        {/* {current < steps.length - 1 && (
           <Button type="primary" onClick={() => next()}>
             Next
           </Button>
-        )}
+        )} */}
         {current === steps.length - 1 && (
           <Button type="primary" onClick={() => message.success('Processing complete!')}>
             Done
@@ -79,4 +89,5 @@ const App = () => {
     </>
   );
 };
-export default App;
+export default BookingState;
+
