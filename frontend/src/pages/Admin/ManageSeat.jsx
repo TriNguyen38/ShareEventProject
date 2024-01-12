@@ -40,9 +40,9 @@ const ManageSeat = () => {
   const getData = async () => {
     try {
       const result = await getAllseat(pageSize, pageIndex)
-      console.log('res', result);
+      // console.log('res', result);
       setSeat(result.data.result.dataSeats)
-      console.log('Seat', result.data.result.dataSeats)
+      // console.log('Seat', result.data.result.dataSeats)
       setCount(result.data?.result?.count)
       setTotalPage(result.data?.result?.totalPage)
       // console.log(result)

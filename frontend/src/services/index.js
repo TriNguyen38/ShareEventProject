@@ -50,3 +50,7 @@ export const deleteSeat = async (id) => {
     return await axiosInstance.delete(`${url}/seat/deleteSeat/${id}`);
 };
 
+export const getNewEvents = async (id) => {
+    return await axios.get(`${url}/event/newEvents/`);
+};
+

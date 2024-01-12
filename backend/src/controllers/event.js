@@ -85,7 +85,7 @@ const getNewEvents = async (req, res) => {
     try {
         const newEvents = await eventModel.find({ status: "public"},  "image" ).limit(4).sort({createdAt: -1});
 
-        console.log(123);
+        // console.log(123);
 
         if (!newEvents) {
             return res.status(404).json({ message: "New Events are not found!" });
